@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+<title>Amma Care Meals</title>
+
+     <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+     rel="stylesheet">
+
+       <!-- EMAILJS -->
+     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+
+   /* =====================================================
+               BASIC
+      ===================================================== */
+
+    :root{
+    --brown:#4A2C20;
+    --dark:#2D1710;
+    --gold:#D4A84F;
+    --cream:#FFF8E7;
+    --green:#5E7D4A;
+    --muted:#78685E;
+    --white:#FFFFFF;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+    margin:0;
+    background:#e8dfd2;
+    font-family:"DM Sans",sans-serif;
+    color:var(--brown);
+    }
+
+    .app{
+     max-width:480px;
+     margin:auto;
+     min-height:100vh;
+     background:var(--cream);
+     box-shadow:0 0 40px #0002;
+    }
+
+
+    /* =====================================================
+           HEADER
+       ==================================================== */
+
+    .header{
+     position:sticky;
+     top:0;
+     z-index:100;
+     padding:100px;
+     background-image: url("images/background.jpg");
+     background-position: center;
+     background-size: cover;
+     backdrop-filter:blur(15px);
+     border-bottom:1px solid #4a2c2020;
+    }
+
+    .brand{
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+     font-family:"Playfair Display";
+     font-size:21px;
+     font-weight:700;
+    }
+
+    .brand span{
+     color:var(--gold);
+    }
+
+    .location{
+     font-family:"DM Sans";
+     font-size:10px;
+     color:var(--muted);
+    }
+
+    .search{
+     display:flex;
+     margin-top:10px;
+     padding:5px;
+     background:white;
+     border-radius:30px;
+     border:1px solid #4a2c2020;
+    }
+
+    .search input{
+     flex:1;
+     border:0;
+     outline:none;
+     padding:9px;
+    }
+
+    .search button{
+     border:0;
+     border-radius:25px;
+     background:var(--brown);
+     color:white;
+     padding:9px 14px;
+     font-weight:800;
+    }
+
+     /* ========== SOCIAL MEDIA SIDEBAR ========== */
+    .social-sidebar {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+    }
+    
+    .social-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    box-shadow:0 5px 15px rgba(0,0,0,0.20);
+    transition: all 0.3s ease;
+    }
+    .social-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+    
+   /* =========================
+            background
+     ========================= */
+    
+    .facebook{
+       background:#1877F2;
+    }
+    .instagram{
+      background:linear-gradient(
+             45deg,
+        #FEDA75,
+        #FA7E1E,
+        #D62976,
+        #962FBF,
+        #4F5BD5
+    );
+    }
+    .whatsapp{
+      background:#25D366;
+    }
+    .tiktok{
+    background:#000000;
+    }
+    .youtube{
+    background:#FF0000;
+    }
+    .threads{
+    background:#000000;
+    }
+    
+    .social-btn:hover {
+    transform: scale(1.15);
+     box-shadow:
+        0 8px 25px rgba(0,0,0,0.30);
+    }
+    @media(max-width:600px){
+    .social-sidebar{
+        right:10px;
+        gap:10px;
+    }
+    .social-btn{
+        width:43px;
+        height:43px;
+    }
+    .social-btn svg{
+        width:23px;
+        height:23px;
+    }
+    }
+    
+    
+    /* =====================================================
+           PAGE
+       ===================================================== */
+
+    .content{
+     padding-bottom:100px;
+    }
+
+    .page{
+     display:none;
+    }
+
+    .page.active{
+     display:block;
+    }
+
+    /* =====================================================
+          HERO
+       ===================================================== */
+
+    .hero{
+     height:220px;
+     margin:14px;
+     padding:25px;
+     border-radius:27px;
+     display:flex;
+     align-items:flex-end;
+     color:white;
+     background-image: url("images/hero.jpg");
+     background-position: center;
+     background-size: cover;
+    }
+
+    .hero small{
+     color:#f1d68d;
+     font-weight:800;
+     letter-spacing:1.5px;
+    }
+
+    .hero h1{
+     font-family:"Playfair Display";
+     font-size:31px;
+     line-height:1.08;
+     margin:8px 0;
+
+}
+
+.hero p{
+
+font-size:12px;
+
+line-height:1.5;
+
+}
+
+.gold-button{
+
+border:0;
+
+padding:12px 17px;
+
+border-radius:13px;
+
+background:linear-gradient(135deg,#e6bf6b,#b7862e);
+
+color:var(--dark);
+
+font-weight:900;
+
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+
+padding:20px 14px 0;
+
+}
+
+.section-head{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:12px;
+
+}
+
+.section-head h2{
+
+margin:0;
+
+font-family:"Playfair Display";
+
+font-size:21px;
+
+}
+
+.section-head small{
+
+color:var(--green);
+
+font-weight:800;
+
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.categories{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:8px;
+
+}
+
+.category{
+
+border:0;
+
+background:white;
+
+padding:8px;
+
+border-radius:16px;
+
+text-align:center;
+
+box-shadow:0 4px 12px #4a2c2010;
+
+}
+
+.category img{
+
+width:100%;
+
+height:60px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+}
+
+.category span{
+
+display:block;
+
+margin-top:5px;
+
+font-size:10px;
+
+font-weight:900;
+
+color:var(--brown);
+
+}
+
+
+/* =====================================================
+   PRODUCT GRID
+   IMPORTANT: ALWAYS 2 COLUMNS
+===================================================== */
+
+.product-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(2,minmax(0,1fr));
+
+gap:10px;
+
+}
+
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.product-card{
+
+background:white;
+
+padding:9px;
+
+border-radius:19px;
+
+border:1px solid #4a2c2015;
+
+box-shadow:0 5px 15px #4a2c200d;
+
+cursor:pointer;
+
+}
+
+.product-image{
+
+height:125px;
+
+border-radius:14px;
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+.product-image img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+.product-tag{
+
+position:absolute;
+
+top:7px;
+
+left:7px;
+
+padding:4px 7px;
+
+border-radius:20px;
+
+background:#2d1710dd;
+
+color:white;
+
+font-size:8px;
+
+font-weight:900;
+
+}
+
+.product-card h3{
+
+font-size:13px;
+
+margin:9px 2px 3px;
+
+}
+
+.product-card p{
+
+font-size:9px;
+
+color:var(--muted);
+
+margin:0 2px 8px;
+
+line-height:1.4;
+
+}
+
+.card-bottom{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.card-price{
+
+font-size:12px;
+
+font-weight:900;
+
+}
+
+.plus{
+
+width:30px;
+
+height:30px;
+
+border:0;
+
+border-radius:50%;
+
+background:var(--brown);
+
+color:white;
+
+font-size:18px;
+
+}
+
+
+/* =====================================================
+   INFO STRIP
+===================================================== */
+
+.info-strip{
+
+margin:20px 14px;
+
+padding:15px;
+
+border-radius:18px;
+
+background:
+
+linear-gradient(135deg,#5e7d4a,#3e5d32);
+
+color:white;
+
+font-size:11px;
+
+}
+
+
+/* =====================================================
+   DETAIL PAGE
+===================================================== */
+
+.detail-box{
+
+padding:14px;
+
+}
+
+.detail-image{
+
+width:100%;
+
+height:270px;
+
+object-fit:cover;
+
+border-radius:24px;
+
+}
+
+.detail-title{
+
+font-family:"Playfair Display";
+
+font-size:26px;
+
+margin:15px 0 5px;
+
+}
+
+.detail-description{
+
+font-size:12px;
+
+color:var(--muted);
+
+line-height:1.6;
+
+}
+
+
+/* =====================================================
+   OPTIONS
+===================================================== */
+
+.option-title{
+
+font-weight:900;
+
+font-size:14px;
+
+margin-top:20px;
+
+margin-bottom:9px;
+
+}
+
+.option-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:8px;
+
+}
+
+.option{
+
+border:1px solid #4a2c2030;
+
+background:white;
+
+border-radius:14px;
+
+padding:11px;
+
+cursor:pointer;
+
+}
+
+.option.selected{
+
+border:2px solid var(--gold);
+
+background:#fff5dc;
+
+}
+
+.option-name{
+
+font-size:11px;
+
+font-weight:900;
+
+}
+
+.option-price{
+
+display:block;
+
+margin-top:4px;
+
+font-size:12px;
+
+color:var(--green);
+
+font-weight:900;
+
+}
+
+
+/* =====================================================
+   QUANTITY
+===================================================== */
+
+.quantity-title{
+
+margin-top:20px;
+
+font-size:14px;
+
+font-weight:900;
+
+}
+
+.quantity-control{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+margin-top:10px;
+
+}
+
+.quantity-control button{
+
+width:38px;
+
+height:38px;
+
+border:0;
+
+border-radius:50%;
+
+background:var(--brown);
+
+color:white;
+
+font-size:20px;
+
+}
+
+.quantity-number{
+
+font-size:18px;
+
+font-weight:900;
+
+}
+
+
+/* =====================================================
+   PRIMARY BUTTON
+===================================================== */
+
+.primary-button{
+
+width:100%;
+
+margin-top:20px;
+
+border:0;
+
+padding:14px;
+
+border-radius:14px;
+
+background:
+
+linear-gradient(135deg,var(--brown),#71432e);
+
+color:white;
+
+font-weight:900;
+
+font-size:13px;
+
+}
+
+
+/* =====================================================
+   BOX
+===================================================== */
+
+.box{
+
+margin:14px;
+
+padding:17px;
+
+border-radius:20px;
+
+background:white;
+
+border:1px solid #4a2c2015;
+
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+.cart-row{
+
+display:grid;
+
+grid-template-columns:55px 1fr auto;
+
+gap:9px;
+
+padding:11px 0;
+
+border-bottom:1px solid #4a2c2015;
+
+}
+
+.cart-row img{
+
+width:55px;
+
+height:55px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+}
+
+.cart-name{
+
+font-size:12px;
+
+font-weight:900;
+
+}
+
+.cart-info{
+
+font-size:10px;
+
+color:var(--muted);
+
+}
+
+.qty-small{
+
+display:flex;
+
+gap:6px;
+
+align-items:center;
+
+margin-top:5px;
+
+}
+
+.qty-small button{
+
+width:23px;
+
+height:23px;
+
+border-radius:50%;
+
+border:1px solid #4a2c2020;
+
+background:white;
+
+}
+
+.remove{
+
+border:0;
+
+border-radius:8px;
+
+background:#f1e6dc;
+
+color:#9a5b43;
+
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.summary{
+
+margin-top:15px;
+
+padding:13px;
+
+background:#faf4e9;
+
+border-radius:14px;
+
+}
+
+.summary-row{
+
+display:flex;
+
+justify-content:space-between;
+
+margin:7px 0;
+
+font-size:12px;
+
+}
+
+.summary-total{
+
+border-top:1px solid #4a2c2020;
+
+padding-top:10px;
+
+font-size:16px;
+
+font-weight:900;
+
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.field{
+
+margin:11px 0;
+
+}
+
+.field label{
+
+display:block;
+
+font-size:10px;
+
+font-weight:900;
+
+margin-bottom:5px;
+
+}
+
+.field input,
+
+.field textarea{
+
+width:100%;
+
+padding:11px;
+
+border:1px solid #4a2c2020;
+
+border-radius:10px;
+
+outline:none;
+
+font-family:inherit;
+
+}
+
+.field textarea{
+
+min-height:75px;
+
+}
+
+
+/* =====================================================
+   INVESTOR
+===================================================== */
+
+.investor-banner{
+
+margin:14px;
+
+padding:24px;
+
+border-radius:23px;
+
+color:white;
+
+background:
+
+linear-gradient(135deg,#2d1710ee,#4a2c20cc),
+
+url("images/investor.jpg")
+
+center/cover;
+
+}
+
+.investor-banner h2{
+
+margin:0;
+
+font-family:"Playfair Display";
+
+font-size:27px;
+
+}
+
+
+/* =====================================================
+   BACK
+===================================================== */
+
+.back-button{
+
+border:0;
+
+background:none;
+
+color:var(--green);
+
+font-weight:900;
+
+padding:0;
+
+margin-bottom:10px;
+
+}
+
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+
+position:fixed;
+
+z-index:200;
+
+bottom:9px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:min(450px,calc(100% - 18px));
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+padding:6px;
+
+border-radius:21px;
+
+background:#fff8e7f5;
+
+backdrop-filter:blur(15px);
+
+border:1px solid #4a2c2018;
+
+box-shadow:0 10px 30px #2d171033;
+
+}
+
+.bottom-nav button{
+
+border:0;
+
+background:none;
+
+border-radius:14px;
+
+padding:8px 2px;
+
+color:var(--muted);
+
+font-size:9px;
+
+font-weight:900;
+
+}
+
+.bottom-nav button.active{
+
+background:#f0e1c8;
+
+color:var(--brown);
+
+}
+
+.nav-icon{
+
+display:block;
+
+font-size:17px;
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+
+position:fixed;
+
+z-index:900;
+
+bottom:90px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+background:var(--brown);
+
+color:white;
+
+padding:10px 15px;
+
+border-radius:30px;
+
+font-size:11px;
+
+white-space:nowrap;
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:390px){
+
+.product-grid{
+
+grid-template-columns:
+
+repeat(2,minmax(0,1fr)) !important;
+
+}
+
+.product-image{
+
+height:105px;
+
+}
+
+.product-card h3{
+
+font-size:12px;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+    
+    <!-- SOCIAL MEDIA SIDEBAR -->
+    <div class="social-sidebar">
+    <a href="https://wa.me/94789002698" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+    <svg viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 0 0-8.7 15l-1.3 5 5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.5.1-.1.2-.5.7-.6.8-.1.2-.2.2-.4.1-1.1-.5-1.8-1-2.5-2.1-.2-.3.2-.3.5-1 .1-.2.1-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.4c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.8 3.4 1.4.6 1.4.4 1.7.4.5 0 1.2-.5 1.4-.9.2-.4.2-.8.1-.9z"/>
+        </svg>
+    </a>
+    <a href="https://www.facebook.com/share/1JfMBAPoM6/" target="_blank" class="social-btn facebook" title="Facebook">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+    </a>
+    <a href="https://www.instagram.com/amma_care.meals?igsi=MTRxMDNmMnN5aGxkNg==" target="_blank" class="social-btn instagram" title="Instagram">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        fill="none"
+        stroke="white"
+        stroke-width="2.2"
+    />
+
+    <circle
+        cx="12"
+        cy="12"
+        r="4.2"
+        fill="none"
+        stroke="white"
+        stroke-width="2.2"
+    />
+
+    <circle
+        cx="17.3"
+        cy="6.8"
+        r="1.2"
+        fill="white"
+    />
+    </svg>
+    </a>
+    <a href="https://www.threads.com/@amma_care.meals" target="_blank" class="social-btn threads" title="Threads">
+     <svg viewBox="0 0 24 24">
+          <path d="M12 2 C6.4 2 3 5.8 3 11.8 C3 18.1 6.5 22 12.2 22 C17.1 22 20.5 19.3 20.5 15.2 C20.5 12.1 18.7 9.9 15.9 8.8 C15.1 6.3 13.5 5 11.2 5 C8.8 5 7.1 6.5 6.5 8.7 H9 C9.4 7.6 10.2 7 11.3 7 C12.7 7 13.5 7.8 13.9 9 C13.3 8.9 12.6 8.8 11.9 8.8 C8.7 8.8 6.5 10.7 6.5 13.5 C6.5 16.4 8.8 18.2 11.9 18.2 C14.8 18.2 16.5 16.7 16.5 14.3 C16.5 13.4 16.2 12.7 15.7 12.1 C17.5 12.9 18.5 14 18.5 15.5 C18.5 18.1 16.2 20 12.2 20 C7.7 20 5 17 5 11.8 C5 7 7.4 4 12 4 C14.2 4 16 5.1 17.1 7 H19.4 C18.1 3.7 15.4 2 12 2Z M12 11 C14 11 15 12 15 13.6 C15 15.4 13.9 16.3 12 16.3 C10 16.3 8.8 15.3 8.8 13.5 C8.8 11.9 10 11 12 11Z "/>
+        </svg>
+    </a>
+    <a href="https://www.tiktok.com/@amma.car.meals?_r=1&_t=ZS-99MCZDntnJn" target="_blank" class="social-btn tiktok" title="TikTok">
+       <svg viewBox="0 0 24 24">
+       <path d=" M15 3 C15.4 5.1 16.5 6.5 19 7 V10 C17.4 9.8 16.1 9.2 15 8.3 V14.5 C15 18.1 12.2 21 8.6 21 C5.3 21 3 18.7 3 15.6 C3 12.4 5.5 10 8.8 10 C9.3 10 9.7 10.1 10 10.2 V13.5 C9.6 13.3 9.2 13.2 8.8 13.2 C7.5 13.2 6.5 14.2 6.5 15.5 C6.5 16.9 7.5 17.8 8.8 17.8 C10.2 17.8 11.5 16.7 11.5 14.9 V3 H15Z"/>
+        </svg>
+    </a>
+    <a href="https://youtube.com/@amma_care_meals?si=jMr5745SpWptYAwI" target="_blank" class="social-btn youtube" title="YouTube">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>
+    </a>
+    </div>
+
+
+     <!-- ==================================================
+                HEADER
+          ================================================== -->
+
+    <header class="header">
+        
+    </header>
+
+    <main class="content">
+
+    <!-- ==================================================
+                 HOME
+         ================================================== -->
+     
+    <section id="homePage" class="page active">
+    <div class="search">
+       <button onclick="searchFoods()"> தேடு </button>
+      <input id="searchInput" placeholder="உணவை தேடுங்கள்..." oninput="searchFoods()">
+      </div>
+    
+    <div class="hero">
+    </div>
+
+    <!-- CATEGORIES -->
+
+    <div class="section">
+    <div class="section-head"><h2>எங்கள் வகைகள்</h2><small>Explore</small>
+    </div>
+    <div class="categories">
+
+    <!-- உணவு -->
+
+    <button class="category" onclick="openCategory('food')">
+    <img src="images/category-food.jpg">
+    <span>உணவுகள்</span>
+    </button>
+
+    <!-- பொருட்கள் -->
+
+    <button class="category" onclick="openCategory('products')">
+    <img src="images/category-products.jpg">
+    <span>பொருட்கள்</span>
+    </button>
+
+    <!-- சிறுவர்கள் -->
+
+    <button class="category" onclick="openCategory('kids')">
+    <img src="images/category-kids.jpg">
+    <span>சிறுவருக்கு</span>
+    </button>
+
+    <!-- முதியோர் -->
+ 
+    <button class="category" onclick="openCategory('elderly')">
+    <img src="images/category-elderly.jpg">
+    <span>முதியோருக்கு</span>
+    </button>
+
+     </div>
+   </div>
+
+    <div class="info-strip"><b>Cash on Delivery</b>
+    <br>Fresh daily • Homemade love •மட்டக்களப்பு நகர delivery
+    </div>
+
+    <!-- ALL FOODS -->
+    <div class="section">
+
+    <div class="section-head">
+        <h2>எங்கள் உணவுகள்</h2>
+
+    </div>
+
+    <div id="homeFoodGrid" class="product-grid"></div>
+
+    </div>
+
+
+    <!-- ALL PRODUCTS -->
+      <div class="section">
+
+    <div class="section-head">
+        <h2> எங்கள் பொருட்கள்</h2>
+
+    </div>
+
+    <div id="homeProductGrid" class="product-grid"></div>
+
+    </div>
+
+  </section>
+
+   <!-- ==================================================
+              CATEGORY PAGE
+        ================================================== -->
+
+       <section id="categoryPage" class="page">
+         <div class="box">
+       <button class="back-button" onclick="switchPage('home')">← Home</button>
+       <div class="section-head"><h2 id="categoryTitle">உணவுகள்</h2>
+       <small id="categoryCount"></small>
+       </div>
+       <div id="categoryGrid" class="product-grid"></div>
+       </div>
+
+    </section>
+
+     <!-- ==================================================
+          DETAIL PAGE
+          ================================================== -->
+
+<section
+id="detailPage"
+class="page"
+>
+
+<div class="detail-box">
+
+
+<button
+class="back-button"
+onclick="goBackFromDetail()"
+>
+← திரும்ப
+</button>
+
+
+<img
+id="detailImage"
+class="detail-image"
+>
+
+
+<h1
+id="detailTitle"
+class="detail-title"
+>
+</h1>
+
+
+<p
+id="detailDescription"
+class="detail-description"
+>
+</p>
+
+
+<div
+id="detailOptions"
+>
+</div>
+
+
+<div class="quantity-title">
+எத்தனை?
+</div>
+
+
+<div class="quantity-control">
+
+<button
+onclick="changeDetailQty(-1)"
+>
+−
+</button>
+
+
+<span
+id="detailQty"
+class="quantity-number"
+>
+1
+</span>
+
+
+<button
+onclick="changeDetailQty(1)"
+>
++
+</button>
+
+</div>
+
+
+<div
+id="detailTotal"
+style="
+margin-top:15px;
+font-size:20px;
+font-weight:900;
+"
+>
+</div>
+
+
+<button
+class="primary-button"
+onclick="orderDetail()"
+>
+🛒 Order செய்
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+CART PAGE
+================================================== -->
+
+<section
+id="cartPage"
+class="page"
+>
+
+<div class="box">
+
+
+<button
+class="back-button"
+onclick="switchPage('home')"
+>
+← Home
+</button>
+
+
+<h2
+style="font-family:'Playfair Display'"
+>
+உங்கள் Cart
+</h2>
+
+
+<div id="cartItems">
+</div>
+
+
+<div
+id="checkoutArea"
+style="display:none"
+>
+
+
+<div class="summary">
+
+<div class="summary-row">
+
+<span>
+Food / Products Total
+</span>
+
+<b id="subtotal">
+</b>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+Delivery
+</span>
+
+<b>
+Rs 50
+</b>
+
+</div>
+
+
+<div class="summary-row summary-total">
+
+<span>
+மொத்தம்
+</span>
+
+<b id="grandTotal">
+</b>
+
+</div>
+
+</div>
+
+
+<h3>
+Delivery Details
+</h3>
+
+
+<div class="field">
+
+<label>
+பெயர் *
+</label>
+
+<input
+id="orderName"
+placeholder="உங்கள் பெயர்"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Phone *
+</label>
+
+<input
+id="orderPhone"
+type="tel"
+placeholder="07XXXXXXXX"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+முகவரி *
+</label>
+
+<textarea
+id="orderAddress"
+placeholder="Delivery முகவரி"
+></textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>
+மேலும் தகவல்
+</label>
+
+<textarea
+id="orderNotes"
+placeholder="Optional"
+></textarea>
+
+</div>
+
+
+<button
+class="primary-button"
+onclick="submitOrder()"
+>
+Order செய் 
+</button>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+INVESTOR
+================================================== -->
+
+<section
+id="investorPage"
+class="page"
+>
+
+
+<div class="investor-banner">
+
+<h2>
+Become a Partner
+</h2>
+
+<p>
+Amma Care Meals வளர்ச்சியில்
+முதலீடு செய்ய விரும்புகிறீர்களா?
+</p>
+
+</div>
+
+
+<div class="box">
+
+
+<div class="field">
+
+<label>
+முழு பெயர் *
+</label>
+
+<input id="invName">
+
+</div>
+
+
+<div class="field">
+
+<label>
+முகவரி *
+</label>
+
+<input id="invAddress">
+
+</div>
+
+
+<div class="field">
+
+<label>
+NIC / ID *
+</label>
+
+<input id="invNIC">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Phone *
+</label>
+
+<input id="invPhone">
+
+</div>
+
+
+<div class="field">
+
+<label>
+முதலீட்டு தொகை *
+</label>
+
+<input
+id="invAmount"
+type="number"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+மேலதிக தகவல்
+</label>
+
+<textarea id="invDetails"></textarea>
+
+</div>
+
+
+<button
+class="primary-button"
+onclick="submitInvestor()"
+>
+Submit Application
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+ACCOUNT
+================================================== -->
+
+<section
+id="accountPage"
+class="page"
+>
+
+<div class="section">
+
+<h2
+style="font-family:'Playfair Display'"
+>
+My Account
+</h2>
+
+
+
+
+
+<div class="box">
+
+<b>
+🚚 Delivery
+</b>
+
+<br>
+
+<span style="font-size:11px">
+மட்டக்களப்பு நகரம்
+</span>
+
+</div>
+
+
+<div class="box">
+
+<b>
+💵 Payment
+</b>
+
+<br>
+
+<span style="font-size:11px">
+Cash on Delivery
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ==================================================
+BOTTOM NAV
+================================================== -->
+
+<nav class="bottom-nav">
+
+
+<button
+id="nav-home"
+class="active"
+onclick="switchPage('home')"
+>
+
+<span class="nav-icon">
+🏠
+</span>
+
+Home
+
+</button>
+
+
+<button
+id="nav-cart"
+onclick="switchPage('cart')"
+>
+
+<span class="nav-icon">
+🛒
+</span>
+
+Cart
+
+<span id="badge">
+</span>
+
+</button>
+
+
+<button
+id="nav-investor"
+onclick="switchPage('investor')"
+>
+
+<span class="nav-icon">
+🏦
+</span>
+
+Investor
+
+</button>
+
+
+<button
+id="nav-account"
+onclick="switchPage('account')"
+>
+
+<span class="nav-icon">
+👤
+</span>
+
+Account
+
+</button>
+
+
+</nav>
+
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   EMAILJS
+===================================================== */
+
+
+const EMAILJS_PUBLIC_KEY =
+"dJWCmAFJ7mr7ifHw8";
+
+
+const EMAILJS_SERVICE_ID =
+"service_f4zps3c";
+
+
+const ORDER_TEMPLATE_ID =
+"template_f1vfr98";
+
+
+const INVESTOR_TEMPLATE_ID =
+"ID:template_3g2qbe3";
+
+         emailjs.init({
+         publicKey:
+         EMAILJS_PUBLIC_KEY
+         });
+
+
+
+      /* =====================================================
+            FOODS
+         ===================================================== */
+
+
+        const foods = [
+            {id:"food1",name:"தண்ணி சோறு",image:"images/woterrice.jpg",description:"Millet bas food",type:"food",options:[{name:"normal",price:550},{name:"posan",price:750}]},
+            {id:"food2",name:"piddu with curry",image:"images/piddu.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:200},{name:"Egg",price:300},{name:"Chicken",price:450},{name:"mutten",price:700},{name:"fish",price:300},{name:"beef",price:550}]},
+            {id:"food3",name:"idiyappam with curry",image:"images/idiyappam.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:200},{name:"Egg",price:300},{name:"Chicken",price:450},{name:"mutten",price:700},{name:"fish",price:300},{name:"beef",price:550}]},
+            {id:"food4",name:"dosa with curry",image:"images/dosa.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:200},{name:"Egg",price:300},{name:"Chicken",price:450},{name:"mutten",price:700},{name:"fish",price:300},{name:"beef",price:550}]},
+            {id:"food5",name:"idli with curry",image:"images/idli.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:200},{name:"Egg",price:300},{name:"Chicken",price:450},{name:"mutten",price:700},{name:"fish",price:300},{name:"beef",price:550}]},
+            {id:"food6",name:"roddi with curry",image:"images/roddi.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:200},{name:"Egg",price:300},{name:"Chicken",price:450},{name:"mutten",price:700},{name:"fish",price:300},{name:"beef",price:550}]},
+            {id:"food7",name:"noodles with curry",image:"images/noodles.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:500},{name:"Egg",price:600},{name:"Chicken",price:700},{name:"mutten",price:1250},{name:"fish",price:800},{name:"beef",price:850}]},
+            {id:"food8",name:"fried rice",image:"images/fried_rice.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:500},{name:"Egg",price:600},{name:"Chicken",price:700},{name:"mutten",price:1250},{name:"fish",price:800},{name:"beef",price:850}]},
+            {id:"food9",name:"nasi",image:"images/nasi.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:500},{name:"Egg",price:600},{name:"Chicken",price:700},{name:"mutten",price: 1250},{name:"fish",price:800},{name:"beef",price:850}]},
+            {id:"food10",name:"idiyappa kothu",image:"images/idiyappa_kothu.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:500},{name:"Egg",price:600},{name:"Chicken",price:700},{name:"mutten",price: 1250},{name:"fish",price:800},{name:"beef",price:850}]},
+            {id:"food11",name:"piddu kothu",image:"images/piddu_kothu.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:500},{name:"Egg",price:600},{name:"Chicken",price:700},{name:"mutten",price: 1250},{name:"fish",price:800},{name:"beef",price:850}]},
+            {id:"food12",name:"roddi kothu",image:"images/roddi_kothu.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:500},{name:"Egg",price:600},{name:"Chicken",price:700},{name:"mutten",price: 1250},{name:"fish",price:800},{name:"beef",price:850}]},
+            {id:"food13",name:"khichdi with curry",image:"images/khichdi.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:500},{name:"Egg",price:600},{name:"Chicken",price:700},{name:"mutten",price: 1250},{name:"fish",price:800},{name:"beef",price:850}]},
+            {id:"food14",name:"pulab with curry",image:"images/pulab.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:500},{name:"Egg",price:600},{name:"Chicken",price:700},{name:"mutten",price:1250},{name:"fish",price:800},{name:"beef",price:850}]},
+            {id:"food15",name:"parotta with curry",image:"images/parotta.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:200},{name:"Egg",price:300},{name:"Chicken",price:450},{name:"mutten",price:700},{name:"fish",price:300},{name:"beef",price:550}]},
+            {id:"food16",name:"naan with curry",image:"images/naan.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:400},{name:"Egg",price:500},{name:"Chicken",price:600},{name:"mutten",price:850},{name:"fish",price:500},{name:"beef",price:700}]},
+            {id:"food17",name:"dum parotta",image:"images/dum_parotta.jpg",description:"Millet bas food",type:"food",options:[{name:"Egg",price:500},{name:"Chicken",price:650},{name:"mutten",price:900},{name:"fish",price:500},{name:"beef",price:750}]},
+            {id:"food18",name:"rice with curry",image:"images/rice_curry.jpg",type:"food",options:[{name:"Veg",price:300},{name:"Egg",price:400},{name:"Chicken",price:650},{name:"mutten",price:950},{name:"fish",price:400},{name:"beef",price:800}]},
+            {id:"food19",name:"biryani",image:"images/biryani.jpg",type:"food",options:[{name:"Veg",price:750},{name:"Egg",price:850},{name:"Chicken",price:1150},{name:"mutten",price:1700},{name:"fish",price:1450},{name:"beef",price:1300}]},
+            {id:"food20",name:"Dum biryani",image:"images/dum_biryani.jpg",type:"food",options:[{name:"Egg",price:950},{name:"Chicken",price:1250},{name:"mutten",price:1900},{name:"fish",price:1600},{name:"beef",price:1400}]},
+            {id:"food21",name:"Millet biryani",image:"images/millet_biryani.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:1050},{name:"Egg",price:1150},{name:"Chicken",price:1450},{name:"mutten",price:1950},{name:"fish",price:1700},{name:"beef",price:1600}]},
+            {id:"food22",name:"Millet Dum biryani",image:"images/millet_dum_biryani.jpg",description:"Millet bas food",type:"food",options:[{name:"Veg",price:1150},{name:"Egg",price:1250},{name:"Chicken",price:1550},{name:"mutten",price:2100},{name:"fish",price:1800},{name:"beef",price:1700}]},
+            {id:"food23",name:"Egg Roddi with curry",image:"images/egg_roddi.jpg",type:"food",options:[{name:"Chicken",price:750},{name:"mutten",price:1200},{name:"fish",price:800},{name:"beef",price:900}]},
+            {id:"food24",name:"Millet Pizza",image:"images/pizza.jpg",description:"Millet bas food",type:"food",options:[{name:"mini",price:1500},{name:"big",price:2500}]},
+            {id:"food25",name:"milk rice",image:"images/milk_rice.jpg",description:"Millet bas food",type:"food",options:[{name:"normal",price:350},{name:"posan",price:450}]}];
+           
+            
+
+      /* =====================================================
+                PRODUCTS 
+        ===================================================== */
+        
+        const products = [
+           
+            {id:"products1",name:"Honey",image:"images/honey.jpg",type:"products",options:[{name:"250ml",price:1200},{name:"500ml",price:2000},{name:"1L",price:3500},{name:"2L",price:7000}] },
+            {id:"products2",name:"thina piddu flour",image:"images/thina_piddu.jpg",type:"products",options:[{name:"250g",price:450},{name:"500g",price:750},{name:"1Kg",price:1350},{name:"2kg",price:2500},{name:"5Kg",price:11000}] },
+            {id:"products3",name:"varagu piddu flour",image:"images/varagu_piddu.jpg",type:"products",options:[{name:"250g",price:450},{name:"500g",price:750},{name:"1Kg",price:1350},{name:"2kg",price:2500},{name:"5Kg",price:11000}] },
+            {id:"products4",name:"samai piddu flour",image:"images/samai_piddu.jpg",type:"products",options:[{name:"250g",price:450},{name:"500g",price:750},{name:"1Kg",price:1350},{name:"2kg",price:2500},{name:"5Kg",price:11000}] },
+            {id:"products5",name:"kambu piddu flour",image:"images/kambu_piddu.jpg",type:"products",options:[{name:"250g",price:450},{name:"500g",price:750},{name:"1Kg",price:1350},{name:"2kg",price:2500},{name:"5Kg",price:11000}] },
+            {id:"products6",name:"kurakkan piddu flour",image:"images/kurakkan_piddu.jpg",type:"products",options:[{name:"250g",price:200},{name:"500g",price:400},{name:"1Kg",price:800},{name:"2kg",price:1500},{name:"5Kg",price:7000}] },
+            
+            {id:"products7",name:"thina idiyappa flour",image:"images/thina_idiyappam.jpg",type:"products",options:[{name:"250g",price:450},{name:"500g",price:750},{name:"1Kg",price:1350},{name:"2kg",price:2500},{name:"5Kg",price:11000}] },
+            {id:"products8",name:"varagu idiyappa flour",image:"images/varagu_idiyappam.jpg",type:"products",options:[{name:"250g",price:450},{name:"500g",price:750},{name:"1Kg",price:1350},{name:"2kg",price:2500},{name:"5Kg",price:11000}] },
+            {id:"products9",name:"samai idiyappa flour",image:"images/samai_idiyappam.jpg",type:"products",options:[{name:"250g",price:450},{name:"500g",price:750},{name:"1Kg",price:1350},{name:"2kg",price:2500},{name:"5Kg",price:11000}] },
+            {id:"products10",name:"kambu idiyappa flour",image:"images/kambu_idiyappam.jpg",type:"products",options:[{name:"250g",price:450},{name:"500g",price:750},{name:"1Kg",price:1350},{name:"2kg",price:2500},{name:"5Kg",price:11000}] },
+            {id:"products11",name:"kurakkan idiyappa flour",image:"images/kurakkan_idiyappam.jpg",type:"products",options:[{name:"250g",price:200},{name:"500g",price:400},{name:"1Kg",price:800},{name:"2kg",price:1500},{name:"5Kg",price:7000}] },
+          
+            {id:"products12",name:"thina flour",image:"images/thina.jpg",type:"products",options:[{name:"250g",price:600},{name:"500g",price:999},{name:"1Kg",price:1800},{name:"2kg",price:3500},{name:"5Kg",price:15000}] },
+            {id:"products13",name:"varagu flour",image:"images/varagu.jpg",type:"products",options:[{name:"250g",price:600},{name:"500g",price:999},{name:"1Kg",price:1800},{name:"2kg",price:3500},{name:"5Kg",price:15000}] },
+            {id:"products14",name:"samai flour",image:"images/samai.jpg",type:"products",options:[{name:"250g",price:600},{name:"500g",price:999},{name:"1Kg",price:1800},{name:"2kg",price:3500},{name:"5Kg",price:15000}] },
+            {id:"products15",name:"kambu flour",image:"images/kambu.jpg",type:"products",options:[{name:"250g",price:600},{name:"500g",price:999},{name:"1Kg",price:1800},{name:"2kg",price:3500},{name:"5Kg",price:15000}] },
+            {id:"products16",name:"kurakkan flour",image:"images/kurakkan.jpg",type:"products",options:[{name:"250g",price:300},{name:"500g",price:500},{name:"1Kg",price:900},{name:"2kg",price:1500},{name:"5Kg",price:4000}] },
+          
+            {id:"products17",name:"thina Rice",image:"images/thina_rice.jpg",type:"products",options:[{name:"250g",price:500},{name:"500g",price:800},{name:"1Kg",price:1500},{name:"2kg",price:3000},{name:"5Kg",price:14000}] },
+            {id:"products18",name:"varagu Rice",image:"images/varagu_rice.jpg",type:"products",options:[{name:"250g",price:500},{name:"500g",price:800},{name:"1Kg",price:1500},{name:"2kg",price:3000},{name:"5Kg",price:14000}] },
+            {id:"products19",name:"samai Rice",image:"images/samai_rice.jpg",type:"products",options:[{name:"250g",price:500},{name:"500g",price:800},{name:"1Kg",price:1500},{name:"2kg",price:3000},{name:"5Kg",price:14000}] },
+          
+            {id:"products20",name:"noodles",image:"images/noodles_box.jpg",description:"Millet base noodles",type:"products",options:[{name:"250g",price:700},{name:"500g",price:1200},{name:"1Kg",price:2000},{name:"2kg",price:3500},{name:"5Kg",price:15000}] },
+            
+            {id:"products21",name:"Palm sugar candy",image:"images/Palmsugar.jpg",type:"products",options:[{name:"250g",price:999},{name:"500g",price:1999},{name:"1Kg",price:3500}] },
+            {id:"products22",name:"odiyal",image:"images/odiyal.jpg",type:"products",options:[{name:"250g",price:600},{name:"500g",price:999},{name:"1Kg",price:1999}] },
+            {id:"products23",name:"palm tuber flour",image:"images/palm_flour.jpg",type:"products",options:[{name:"250g",price:900},{name:"500g",price:1600},{name:"1Kg",price:2999}] },
+          
+            {id:"products24",name:"biscuit",image:"images/biscuit.jpg",type:"products",options:[{name:"biscuit",price:1400}] },
+            {id:"products25",name:"murukku",image:"images/murukku.jpg",type:"products",options:[{name:"murukku",price:1400}] },
+            {id:"products26",name:"cookies",image:"images/cookies.jpg",type:"products",options:[{name:"cookies",price:1400}] },
+            {id:"products27",name:"ice cream",image:"images/cream.jpg",type:"products",options:[{name:"ice cream",price:1400} ] } ];
+          
+            
+     /*===================================================== 
+               KIDS 
+     ===================================================== */ 
+     
+        const kidsFoods = [
+            
+            { id:"kid1", name:"morning food", image:"images/morning_kids.jpg", type:"kids",options:[{name:"morning",price:1999 }] },
+            { id:"kid2", name:"evening food", image:"images/evening_kids.jpg", type:"kids",options:[{name:"evening",price:2999 }] },
+            { id:"kid3", name:"night food", image:"images/night_kids.jpg", type:"kids",options:[{name:"night",price:1999 }] }];
+           
+     
+     /* ===================================================== 
+             ELDERLY 
+     ===================================================== */ 
+            
+        const elderlyFoods = [ 
+           
+            { id:"elder1", name:"morning food", image:"images/morning_elder.jpg", type:"elderly",options:[{name:"morning",price:1999 }] },
+            { id:"elder2", name:"evening food", image:"images/evening_elder.jpg", type:"elderly",options:[{name:"evening",price:2999 }] },
+            { id:"elder3", name:"night food", image:"images/night_elder.jpg", type:"elderly",options:[{name:"night",price:1999 }] }];
+           
+           
+     /* =================================================== 
+           ALL ITEMS 
+     ===================================================== */
+        
+        const allItems = [ ...foods, ...products, ...kidsFoods, ...elderlyFoods ]; 
+        
+     /* ===================================================== 
+          CART 
+        ===================================================== */ 
+        
+        let cart = JSON.parse( localStorage.getItem("ammaCart") || "[]" ); 
+        function saveCart(){ localStorage.setItem( "ammaCart", JSON.stringify(cart) ); updateBadge(); }
+        function updateBadge(){ let quantity = cart.reduce( (total,item)=> total + item.quantity, 0 ); 
+        document.getElementById("badge") .textContent = quantity ? "("+quantity+")" : ""; } 
+        
+     /* ===================================================== 
+             PAGE SWITCH
+     ===================================================== */
+     
+        function switchPage(page){ document .querySelectorAll(".page") .forEach(p=>{ p.classList.remove("active"); }); 
+        document .getElementById(page+"Page") .classList.add("active"); 
+        document .querySelectorAll(".bottom-nav button") .forEach(b=>{ b.classList.remove("active"); }); 
+        const nav = document.getElementById("nav-"+page); if(nav){ nav.classList.add("active"); } if(page==="cart"){ renderCart(); } window.scrollTo(0,0); } 
+        
+     /* ===================================================== 
+           CATEGORY
+     ===================================================== */ 
+     
+        let currentCategory = "food"; let previousPage = "category"; 
+        function openCategory(category){ currentCategory = category; let data = []; let title = ""; 
+        if(category==="food"){ data = foods; title = "🍛 உணவுகள்"; } else if(category==="products"){ data = products; title = "🛍️ பொருட்கள்"; } else if(category==="kids"){ data = kidsFoods; title = "👶 சிறுவர்களுக்கு"; } else if(category==="elderly"){ data = elderlyFoods; title = "👴 முதியோருக்கு"; } 
+        document .getElementById("categoryTitle") .textContent = title; document .getElementById("categoryCount") .textContent = data.length+" items"; document .getElementById("categoryGrid") .innerHTML = data.map(item=>` 
+         <div class="product-card" onclick="openDetail('${item.id}')" >
+         <div class="product-image"> <span class="product-tag"> ${category==="products"?"PRODUCT":"FRESH"} </span> 
+         <img src="${item.image}" alt="${item.name}" > </div> <h3> ${item.name} </h3> <p> ${item.description} </p> 
+         <div class="card-bottom"> <span class="card-price"> Rs ${item.options[0].price} </span> 
+         <button class="plus" onclick="event.stopPropagation();openDetail('${item.id}')" > + </button> 
+         </div> </div> `).join(""); previousPage = "category"; switchPageWithoutNav("category"); } 
+         
+     /* ===================================================== 
+              DETAIL 
+     ===================================================== */ 
+     
+     let currentDetail = null; let selectedOption = 0; let detailQuantity = 1; 
+     function openDetail(id){ const item = allItems.find( x=>x.id===id ); if(!item)return; currentDetail = item; selectedOption = 0; detailQuantity = 1; 
+     document .getElementById("detailImage") .src = item.image; document .getElementById("detailTitle") .textContent = item.name; 
+     document .getElementById("detailDescription") .textContent = item.description; 
+     /* OPTIONS */ 
+     document .getElementById("detailOptions") .innerHTML = `
+        <div class="option-title"> ${item.type==="products" ? "எடை தேர்வு செய்யவும்" : "உணவு வகையை தேர்வு செய்யவும்"} </div> 
+        <div class="option-grid"> ${item.options.map((option,index)=>`
+        <div class="option ${index===0?"selected":""}" onclick="selectOption(${index})" id="option-${index}" >
+        <div class="option-name"> ${option.name} </div>
+        <span class="option-price"> Rs ${option.price} </span> </div> `).join("")} </div> `; updateDetailTotal(); previousPage = "category";switchPageWithoutNav("detail"); } 
+        
+     /* ===================================================== 
+     SELECT OPTION 
+     ===================================================== */
+     
+     function selectOption(index){ selectedOption = index; 
+     document .querySelectorAll(".option") .forEach( el=>el.classList.remove("selected") );
+     document .getElementById( "option-"+index ) .classList.add("selected"); updateDetailTotal(); }
+     
+     /* =====================================================
+     QUANTITY
+     ===================================================== */
+     
+     function changeDetailQty(change){ detailQuantity += change; if(detailQuantity<1){ detailQuantity=1; } 
+     document .getElementById("detailQty") .textContent = detailQuantity; updateDetailTotal(); }
+     
+     /* =====================================================
+     DETAIL TOTAL
+     ===================================================== */
+     
+     function updateDetailTotal(){ if(!currentDetail)return;
+     const price = currentDetail .options[selectedOption] .price;
+     const total = price * detailQuantity;
+     document .getElementById("detailTotal") .textContent = "மொத்தம்: Rs "+total; } 
+     
+     /* =====================================================
+     ORDER DETAI
+    L ===================================================== */
+    
+    function orderDetail(){ if(!currentDetail)return;
+    const option = currentDetail .options[selectedOption];
+    const cartId = currentDetail.id +"-"+option.name;
+    const existing = cart.find( item=>item.cartId===cartId );
+    if(existing){ existing.quantity += detailQuantity; }
+    else{ cart.push({ cartId:cartId, id:currentDetail.id, name:currentDetail.name, image:currentDetail.image, option:option.name, price:option.price, quantity:detailQuantity }); } 
+    saveCart(); showToast( currentDetail.name+ " Cart-ல் சேர்க்கப்பட்டது" ); switchPage("cart") } 
+    
+    /*================================================== 
+    DETAIL BACK
+    ===================================================== */ 
+    
+    function goBackFromDetail(){ if(previousPage==="category"){ openCategory(currentCategory); } else{ switchPage("home"); } }
+    
+    /* =====================================================
+    CART
+    ===================================================== */ 
+    
+    function renderCart(){ const container = document.getElementById("cartItems");
+    const checkout = document.getElementById("checkoutArea"); if(cart.length===0)
+          { container.innerHTML=` <div style=" text-align:center; padding:40px; color:#78685e; font-size:12px; " > 🛒 <br><br> Cart காலியாக உள்ளது. <br> Home-ல் இருந்து உணவை சேர்க்கவும். </div> `; checkout.style.display = "none"; return; } container.innerHTML = cart.map(item=>` 
+           <div class="cart-row"> <img src="${item.image}" >
+           <div> <div class="cart-name"> ${item.name} </div>
+           <div class="cart-info"> ${item.option} <br> Rs ${item.price} × ${item.quantity} = Rs ${item.price*item.quantity} </div>
+           <div class="qty-small"> <button onclick="changeCartQty('${item.cartId}',-1)" > − </button> <b> ${item.quantity} </b>
+           <button onclick="changeCartQty('${item.cartId}',1)" > + </button> </div> </div> <button class="remove" onclick="removeCartItem('${item.cartId}')" > × </button> </div> `).join(""); let subtotal = cart.reduce( (total,item)=> total + item.price* item.quantity, 0 ); 
+    document .getElementById("subtotal") .textContent = "Rs "+subtotal;
+    document .getElementById("grandTotal") .textContent = "Rs "+(subtotal+50); checkout.style.display = "block"; } 
+    
+    /* =====================================================
+     CART QUANTITY 
+    ===================================================== */
+    
+    function changeCartQty(cartId,change){ const item = cart.find( x=>x.cartId===cartId ); if(!item)return; item.quantity += change; if(item.quantity<=0){ cart = cart.filter( x=>x.cartId!==cartId ); } saveCart(); renderCart(); } 
+    
+    /* =====================================================
+    REMOVE CART 
+    ===================================================== */ 
+    
+    function removeCartItem(cartId){ cart = cart.filter( x=>x.cartId!==cartId ); saveCart(); renderCart(); } 
+    
+    /* ===================================================== 
+    ORDER EMAIL
+    ===================================================== */ 
+    
+    function submitOrder(){ if(cart.length===0){ showToast( "Cart காலியாக உள்ளது" ); return; } 
+    const name = document .getElementById("orderName") .value.trim();
+    const phone = document .getElementById("orderPhone") .value.trim(); 
+    const address = document .getElementById("orderAddress") .value.trim();
+    const notes = document .getElementById("orderNotes") .value.trim(); if(!name || !phone || !address){ showToast( "பெயர், Phone, முகவரி நிரப்பவும்" ); return; }
+    const subtotal = cart.reduce( (total,item)=> total + item.price* item.quantity, 0 );
+    const orderItems = cart.map(item=>` ${item.name} Option: ${item.option} Price: Rs ${item.price} Quantity: ${item.quantity} Total: Rs ${item.price*item.quantity} `).join("\n");
+    const params = { customer_name:name, customer_phone:phone, customer_address:address, order_items:orderItems, subtotal: "Rs "+subtotal, delivery_charge: "Rs 50", grand_total: "Rs "+(subtotal+50),
+    order_notes:notes, order_date: new Date().toLocaleString() }; emailjs.send( EMAILJS_SERVICE_ID, ORDER_TEMPLATE_ID, params ) .then(()=>{ localStorage.setItem( "ammaLastOrder", JSON.stringify(params) );
+    cart=[]; saveCart(); renderCart(); loadProfile(); showToast( "✓ Order Email அனுப்பப்பட்டது" ); setTimeout(()=>{ switchPage("home"); },1500); }) .catch(error=>{ console.error(error); showToast( "EmailJS settings சரிபார்க்கவும்" ); });}
+    
+   /* ===================================================== 
+   INVESTOR EMAIL
+   ===================================================== */ 
+   
+   function submitInvestor(){ const name = document .getElementById("invName") .value.trim();
+   const address = document .getElementById("invAddress") .value.trim(); 
+   const nic = document .getElementById("invNIC") .value.trim();
+   const phone = document .getElementById("invPhone") .value.trim(); 
+   const amount = document .getElementById("invAmount") .value.trim();
+   const details = document .getElementById("invDetails") .value.trim(); if( !name || !address || !nic || !phone || !amount ){ showToast( "தேவையான தகவல்களை நிரப்பவும்" ); return; } 
+   const params = { investor_name:name, investor_address:address, investor_nic:nic, investor_phone:phone, investment_amount: "Rs "+amount, investor_details:details,
+   application_date: new Date().toLocaleString() }; emailjs.send( EMAILJS_SERVICE_ID, INVESTOR_TEMPLATE_ID, params ) .then(()=>{ document .getElementById("invName") .value=""; 
+   document .getElementById("invAddress") .value=""; 
+   document .getElementById("invNIC") .value=""; 
+   document .getElementById("invPhone") .value="";
+   document .getElementById("invAmount") .value="";
+   document .getElementById("invDetails") .value=""; showToast( "✓ Investor Email அனுப்பப்பட்டது" ); }) .catch(error=>{ console.error(error); showToast( "EmailJS settings சரிபார்க்கவும்" ); });}
+   
+   /* ===================================================== 
+   SEARCH 
+   ===================================================== */
+   
+   function searchFoods(){ const query = document .getElementById("searchInput") .value .toLowerCase(); if(!query){ return; } 
+   const results = allItems.filter(item=> item.name .toLowerCase() .includes(query) ); 
+   document .getElementById("categoryTitle") .textContent = "🔎 Search Results"; 
+   document .getElementById("categoryCount") .textContent = results.length+" items"; 
+   document .getElementById("categoryGrid") .innerHTML = results.map(item=>`
+   <div class="product-card" onclick="openDetail('${item.id}')" > 
+   <div class="product-image"> <img src="${item.image}" > </div> <h3> ${item.name} </h3> <p> ${item.description} </p> 
+   <div class="card-bottom"> <span class="card-price"> Rs ${item.options[0].price} </span> </div> </div> `).join(""); switchPageWithoutNav("category"); }
+   
+   /* =====================================================
+   PAGE WITHOUT NAV
+   ===================================================== */ 
+   
+   function switchPageWithoutNav(page){ document .querySelectorAll(".page") .forEach(p=>{ p.classList.remove("active"); });
+   document .getElementById(page+"Page") .classList.add("active"); window.scrollTo(0,0); }
+   
+   
+   /* =====================================================
+   HOME PAGE - SHOW ALL FOODS & PRODUCTS
+   ===================================================== */
+
+function renderHomeProducts(){
+
+    /* ---------- FOODS ---------- */
+
+    const foodContainer =
+        document.getElementById("homeFoodGrid");
+
+
+    if(foodContainer){
+
+        foodContainer.innerHTML = foods.map(item => `
+
+            <div
+                class="product-card"
+                onclick="openDetail('${item.id}')"
+            >
+
+                <div class="product-image">
+
+                    <span class="product-tag">
+                        FRESH
+                    </span>
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+
+                </div>
+
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+
+                <p>
+                    ${item.description}
+                </p>
+
+
+                <div class="card-bottom">
+
+                    <span class="card-price">
+                        Rs ${item.options[0].price}
+                    </span>
+
+
+                    <button
+                        class="plus"
+                        onclick="
+                            event.stopPropagation();
+                            openDetail('${item.id}')
+                        "
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+    }
+
+
+
+    /* ---------- PRODUCTS ---------- */
+
+    const productContainer =
+        document.getElementById("homeProductGrid");
+
+
+    if(productContainer){
+
+        productContainer.innerHTML = products.map(item => `
+
+            <div
+                class="product-card"
+                onclick="openDetail('${item.id}')"
+            >
+
+                <div class="product-image">
+
+                    <span class="product-tag">
+                        PRODUCT
+                    </span>
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+
+                </div>
+
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+
+                <p>
+                    ${item.description}
+                </p>
+
+
+                <div class="card-bottom">
+
+                    <span class="card-price">
+                        Rs ${item.options[0].price}
+                    </span>
+
+
+                    <button
+                        class="plus"
+                        onclick="
+                            event.stopPropagation();
+                            openDetail('${item.id}')
+                        "
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+    }
+
+}
+  
+   /* ===================================================== 
+   TOAST 
+   ===================================================== */
+   
+   function showToast(message){ const toast = document.createElement("div"); toast.className="toast"; toast.textContent = message; 
+   document .body .appendChild(toast); setTimeout(()=>{ toast.remove(); },2800); }
+   
+   /* ===================================================== 
+   START 
+   ===================================================== */
+   
+  renderHomeProducts(); renderCart(); updateBadge(); 
+   
+   </script>
+   </body>
+  </html>
